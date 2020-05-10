@@ -63,7 +63,7 @@ int main(int argc, char **argv)
                         continue;       // try next address
                 }
         }
-        freeaddrinfo(aio);      // EXPLANATION
+        freeaddrinfo(aio);      // EXPLANATION: // Release address information allocated in getaddrinfo
 
         if (sock == -1) {
                 // No connection at all could be established to remote target
