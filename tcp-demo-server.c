@@ -31,7 +31,7 @@ int main(int argc, char **argv)
                 return 1;
         }
         
-        listen_port = atoi(argv[1]);    // EXPLANATION
+        listen_port = atoi(argv[1]);    // EXPLANATION : // First argument from command line: listening port number
 
         memset(&listen_addr, 0, sizeof(listen_addr));   // Zero out structure
         listen_addr.sin_family = AF_INET;       // Internet address family
@@ -72,14 +72,14 @@ int main(int argc, char **argv)
                 int ret;
 
                 
-                ret = write(client_sock, msg, msglen);  // EXPLANATION
+                ret = write(client_sock, msg, msglen);  // EXPLANATION: // Write the whole message in one go, fail if this does not work
             
                 if (ret != msglen) {
                         perror("Error during write");
                         return 1;
                 }
 
-                close(client_sock);   // EXPLANATION
+                close(client_sock);   // EXPLANATION: 
         }
         /* NOT REACHED */
         return 1;
