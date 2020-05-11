@@ -79,7 +79,7 @@ int main(int argc, char **argv)
                         return 1;
                 }
 
-                close(client_sock);   // EXPLANATION: 
+                close(client_sock);   // EXPLANATION: Clean up after usage. Afterwards close the client socket.  
         }
         /* NOT REACHED */
         return 1;
