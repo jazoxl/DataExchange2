@@ -71,8 +71,17 @@ int main(int argc, char **argv)
                         argv[1], argv[2]);
                 return 1;
         }
+        
+// Aufgabe3
+        
+        int ret_out;								// Store return value in this variable
+        const char* msg_out = "Get\n";				// message that will be sent to the server
+        int msglen_out = strlen(msg_out) + 1;   	// length of message
 
-
+        // Write the whole message in one go, fail if this does not work
+        ret_out = write(sock, msg_out, msglen_out);	// Return value is amount of bytes read, -1 in case of error
+        printf("Data sent: '%s'\n", msg_out);
+        
         // Maximum size of incoming message
         int msglen = 100;
 
