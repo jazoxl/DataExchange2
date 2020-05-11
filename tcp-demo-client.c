@@ -49,12 +49,12 @@ int main(int argc, char **argv)
         // use first address to which a connection can be established
         for (iter = aio; iter != NULL && sock == -1; iter = iter->ai_next) {
             
-                sock = socket(iter->ai_family, iter->ai_socktype, iter->ai_protocol); // EXPLANATION
+                sock = socket(iter->ai_family, iter->ai_socktype, iter->ai_protocol); // EXPLANATION: Try to create a new socket with the corresponding address. The socket will be created with the connection parameters (protocol family, socket type and protocol).
             
             if (sock < 0)
                         continue;       // try next address
 
-                ret = connect(sock, iter->ai_addr, iter->ai_addrlen); // EXPLANATION
+                ret = connect(sock, iter->ai_addr, iter->ai_addrlen); // EXPLANATION: Try to build a connection with the target machine through created socket. (Target information is from active address).
 
             if (ret) {
                         // Socket could not be connected to remote target
@@ -63,7 +63,7 @@ int main(int argc, char **argv)
                         continue;       // try next address
                 }
         }
-        freeaddrinfo(aio);      // EXPLANATION: // Release address information allocated in getaddrinfo
+        freeaddrinfo(aio);      // EXPLANATION: // After iteration the address information will be released. Address information were allocated in getaddrinfo.
 
         if (sock == -1) {
                 // No connection at all could be established to remote target
